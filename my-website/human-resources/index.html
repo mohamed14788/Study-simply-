@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الموارد البشرية | ذاكر ببساطة</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- شريط التنبيهات العلوي -->
+    <div class="top-bar">
+        <span>ℹ منصة طلابية - غير رسمية - لمساعدة طلاب سوهاج | الفرقة الثانية</span>
+    </div>
+
+    <!-- الهيدر العلوي -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="menu-icon" id="menuBtn">☰</div>
+            <div class="logo-area">
+                <div class="logo-text">
+                    <h1>ذاكر ببساطة</h1>
+                    <span>تنجح بذكاء</span>
+                </div>
+                <div class="logo-icon">ذ</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- القائمة الجانبية -->
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn" id="closeBtn">×</div>
+        <ul>
+            <li><a href="../index.html">🏠 الرئيسية</a></li>
+            <li><a href="../index.html#materials">📚 المواد</a></li>
+            <li><a href="../index.html#how-to-study">💡 كيف تذاكر</a></li>
+            <li><a href="../index.html#faq">❓ الأسئلة الشائعة</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- رأس صفحة المادة -->
+    <section class="material-hero">
+        <div class="material-hero-content">
+            <div class="big-icon">👥</div>
+            <h1>إدارة الموارد البشرية</h1>
+            <p>أساسيات إدارة الموارد البشرية: وظائف الإدارة، التوظيف والاختيار، التدريب، التحفيز، وتقييم الأداء.</p>
+            
+            <div class="material-stats-pills">
+                <span>📚 9 محاضرات</span>
+                <span>📖 6 فصول من الكتاب</span>
+                <span>❓ بنك أسئلة</span>
+                <span>🎥 فيديوهات شرح</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- محتوى الأقسام داخل المادة -->
+    <main class="material-content-container">
+
+        <!-- 1. ملخص المادة -->
+        <section class="content-block">
+            <h2>ملخص المادة</h2>
+            <p class="section-desc">ملخص كل محاضرة في شكل انفوجرافيك مبسط للفهم السريع.</p>
+            
+            <div class="items-list">
+                <div class="item-row">
+                    <div class="item-info">
+                        <span class="item-num">1</span>
+                        <div>
+                            <h4>المحاضرة الأولى</h4>
+                            <p>ملخص انفوجرافيك</p>
+                        </div>
+                    </div>
+                    <span class="badge available">متوفر</span>
+                </div>
+                <div class="item-row">
+                    <div class="item-info">
+                        <span class="item-num">2</span>
+                        <div>
+                            <h4>المحاضرة الثانية</h4>
+                            <p>ملخص انفوجرافيك</p>
+                        </div>
+                    </div>
+                    <span class="badge un-available">غير متوفر حالياً</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ملخص الكتاب -->
+        <section class="content-block">
+            <h2>ملخص الكتاب</h2>
+            <p class="section-desc">ملخص فصول الكتاب الرسمي للمادة، فصلاً بعد فصل.</p>
+            
+            <div class="items-list">
+                <div class="item-row">
+                    <div class="item-info">
+                        <span class="item-num">1</span>
+                        <div>
+                            <h4>الفصل الأول من الكتاب</h4>
+                            <p>ملخص الفصل</p>
+                        </div>
+                    </div>
+                    <span class="badge un-available">غير متوفر حالياً</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. بنك الأسئلة -->
+        <section class="content-block">
+            <h2>بنك الأسئلة</h2>
+            <p class="section-desc">اختر نوع الأسئلة التي تريد المراجعة عليها.</p>
+            
+            <div class="items-list">
+                <div class="item-row">
+                    <div class="item-info">
+                        <span class="item-icon-box">❓</span>
+                        <div>
+                            <h4>أسئلة المحاضرات</h4>
+                            <p>أسئلة على كل محاضرة من محاضرات المادة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. فيديوهات يوتيوب -->
+        <section class="content-block">
+            <h2>فيديوهات يوتيوب</h2>
+            <p class="section-desc">شرح بالفيديو لكل فصل ومحاضرة من المادة.</p>
+            
+            <div class="video-cards-grid">
+                <div class="video-card">
+                    <div class="video-thumb">▶</div>
+                    <div class="video-details">
+                        <h4>مقدمة في إدارة الموارد البشرية</h4>
+                        <p>شرح مبسط لأساسيات المادة من الصفر</p>
+                        <a href="#" class="watch-btn">مشاهدة على يوتيوب ←</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>© 2026 ذاكر ببساطة - تنجح بذكاء. جميع الحقوق محفوظة.</p>
+            <p>إعداد وتطوير: محمد وائل - جزء من شبكة SFV-X</p>
+        </div>
+    </footer>
+
+    <a href="#" class="scroll-top-btn">↑</a>
+    <script src="script.js"></script>
+</body>
+</html>
