@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        body {
+            font-family: "Arial";
+        }
+    </style>
+    <script type="text/javascript">
+    window.awsWafCookieDomainList = [];
+    window.gokuProps = {
+"key":"AQIDAHjcYu/GjX+QlghicBgQ/7bFaQZ+m5FKCMDnO+vTbNg96AEL+k6GvQU7iNI/O86TzyO2AAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM+rPoy7zSRMlYo0qhAgEQgDs0BeKeGD9/DA1CDALhHAz3qUXC2oQM7i/M+2BpL+/J89Qrvyjohigz7c3ukcR9z7DdbncC+EbLjykP5Q==",
+          "iv":"CgAHhTOhQwAAA3sh",
+          "context":"CdtmGvRwstSuf36i61JkzlQpp0wpf0RvYqEePa7Al/wKUxfPGdShLTNN+nFtyf0mUJMLnkxi7gwAyzhknzQUiSXidIkGwNEKTMlyJChrYJo7NUgIZGbIMQeC/zKwm8LbhcSBoUbZBQFe5blLZz9lXta8qdsgZuOgZ+75hClOum273+ULVa45cbxfl6QMjCGHFtYydDSZpBFBJvwdoD3MNCnmhf4A/zy7HbkpRYtPmV5g6UTKkE1zWRhaYHzme3eDtxvmgnW+DQSnQzY2N/VBnRm1iX3NJ0L+KKaMo7db0H2pavjBwisnvcZjsymskk5NHYrzMo80i1azOUFwXK2xnfpOqhmXINc2dDp2pMfvq+zkfbbtGYcwCZuvy2o3bg=="
+};
+    </script>
+    <script src="js/challenge.js"></script>
+</head>
+<body>
+    <div id="challenge-container"></div>
+    <script type="text/javascript">
+        AwsWafIntegration.saveReferrer();
+        AwsWafIntegration.checkForceRefresh().then((forceRefresh) => {
+            if (forceRefresh) {
+                AwsWafIntegration.forceRefreshToken().then(() => {
+                    window.location.reload(true);
+                });
+            } else {
+                AwsWafIntegration.getToken().then(() => {
+                    window.location.reload(true);
+                });
+            }
+        });
+    </script>
+    <noscript>
+        <h1>JavaScript is disabled</h1>
+        In order to continue, we need to verify that you're not a robot.
+        This requires JavaScript. Enable JavaScript and then reload the page.
+    </noscript>
+
+</body></html>
