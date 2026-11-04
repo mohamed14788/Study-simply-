@@ -508,3 +508,51 @@ section {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     z-index: 90;
   }
+/* --- تعديلات وإصلاحات القائمة الجانبية والأيقونات --- */
+
+/* تصليح عرض القائمة الجانبية وتجنب تغطيتها للشاشة كلها على الموبايل */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100%;
+    background-color: var(--white);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: 0.3s ease;
+    padding: 20px;
+    max-width: 80%; /* لضمان عدم خروجها عن حدود الشاشة الصغيرة */
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+/* تنسيق صور الأيقونات داخل مواد الفرقة الثانية لتظهر بشكل منتظم وصحيح */
+.material-icon img {
+    width: 45px !important;
+    height: 45px !important;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* تنسيق أيقونات خطوات المذاكرة الأربع */
+.step-icon img {
+    width: 38px !important;
+    height: 38px !important;
+    object-fit: contain;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* تنسيق الصورة الرئيسية في واجهة الموقع (مكتب المذاكرة) */
+.card-showcase img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: block;
+}
+
