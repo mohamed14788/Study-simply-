@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <!-- استيراد خط عربي جميل مثل Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -67,12 +69,22 @@
         </div>
     </section>
 
-    <!-- قسم الكروت التوضيحية -->
+    <!-- قسم الكروت التوضيحية بالشكل الجديد الشيك -->
     <section class="preview-cards-section">
-        <div class="card-showcase">
-            <img src="images/study-desk.jpg" alt="ملخص انفوجرافيك">
-            <div class="floating-badge badge-1">📖 ملخص انفوجرافيك</div>
-            <div class="floating-badge badge-2">❓ بنك أسئلة شامل</div>
+        <div class="material-preview-card">
+            <!-- الصورة الرئيسية -->
+            <img src="images/study-desk.jpg" alt="ملخص انفوجرافيك" class="main-card-img">
+
+            <!-- الكبسولات العائمة فوق الصورة (Overlays) -->
+            <div class="card-overlay-capsule top-right">
+                <i class="fas fa-book-open"></i>
+                <span>ملخص انفوجرافيك</span>
+            </div>
+
+            <div class="card-overlay-capsule bottom-left">
+                <i class="fas fa-question-circle"></i>
+                <span>بنك أسئلة شامل</span>
+            </div>
         </div>
     </section>
 
@@ -85,7 +97,7 @@
         </div>
 
         <div class="materials-grid">
-            <!-- مادة 1: إدارة الموارد البشرية (تم تصحيح مسار المجلد على جيثب) -->
+            <!-- مادة 1: إدارة الموارد البشرية -->
             <div class="material-card">
                 <div class="material-icon">
                     <img src="images/human-resources-icon.png" alt="إدارة الموارد البشرية" style="width: 48px; height: 48px;">
@@ -320,4 +332,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-                                          
