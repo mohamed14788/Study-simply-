@@ -1,41 +1,77 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ذاكر ببساطة | تنجح بذكاء</title>
+    <title>ذاكر ببساطة | تنجح بذكاء - ملخصات الفرقة الثانية تجارة سوهاج</title>
+    <meta name="description" content="منصة طلابية مجانية لطلاب الفرقة الثانية تجارة سوهاج: 7 مواد دراسية ملخصة كانفوجرافيك، بنك أسئلة شامل، وفيديوهات شرح من محاضرات وكتب الكلية.">
+    <meta name="author" content="محمد وائل">
+    <link rel="canonical" href="https://example.com/">
+
+    <!-- Preconnect للأداء -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- OG Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ذاكر ببساطة | تنجح بذكاء">
+    <meta property="og:description" content="كل ملخصات الفرقة الثانية تجارة سوهاج في مكان واحد - انفوجرافيك، أسئلة، فيديوهات">
+    <meta property="og:image" content="images/og-cover.jpg">
+    <meta property="og:locale" content="ar_EG">
+
     <link rel="stylesheet" href="style.css">
-    <!-- استيراد خط عربي جميل مثل Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
 
     <!-- شريط التنبيهات العلوي -->
-    <div class="top-bar">
-        <span>ℹ منصة طلابية - غير رسمية - لمساعدة طلاب سوهاج | الفرقة الثانية</span>
+    <div class="top-bar" role="note">
+        <span>ℹ️ منصة طلابية - غير رسمية - لمساعدة طلاب سوهاج | الفرقة الثانية</span>
     </div>
 
-    <!-- الهيدر العلوي -->
+    <!-- الهيدر -->
     <header class="main-header">
         <div class="header-container">
-            <div class="menu-icon" id="menuBtn">
-                ☰
-            </div>
-            <div class="logo-area">
+            <button class="menu-icon" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false" aria-controls="sidebar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="index.html" class="logo-area" aria-label="العودة للرئيسية">
                 <div class="logo-text">
-                    <h1>ذاكر ببساطة</h1>
+                    <h1 class="logo-title">ذاكر ببساطة</h1>
                     <span>تنجح بذكاء</span>
                 </div>
-                <div class="logo-icon">ذ</div>
-            </div>
+                <div class="logo-icon" aria-hidden="true">ذ</div>
+            </a>
         </div>
     </header>
 
-    <!-- القائمة الجانبية (Sidebar) -->
-    <div class="sidebar" id="sidebar">
-        <div class="close-btn" id="closeBtn">×</div>
+    <!-- القائمة الجانبية -->
+    <nav class="sidebar" id="sidebar" aria-label="القائمة الرئيسية" inert>
+        <button class="close-btn" id="closeBtn" aria-label="إغلاق القائمة">×</button>
         <ul>
             <li><a href="index.html">🏠 الرئيسية</a></li>
             <li><a href="#materials">📚 المواد</a></li>
@@ -45,290 +81,176 @@
         <div class="sidebar-btn-container">
             <a href="#materials" class="btn-primary">تصفح المواد الآن</a>
         </div>
-    </div>
-    <div class="overlay" id="overlay"></div>
+    </nav>
+    <div class="overlay" id="overlay" hidden></div>
 
-    <!-- القسم الرئيسي (Hero Section) -->
-    <section class="hero-section">
-        <div class="badge-hero">
-            <span>📚 منصة طلابية لطلاب سوهاج</span>
-        </div>
-        <h1>ذاكر ببساطة، تنجح بذكاء</h1>
-        <p>كل ملخصات الفرقة الثانية في مكان واحد، من محاضرات وكتب كليتك، محولة لانفوجرافيك سهل للفهم.</p>
-        
-        <div class="hero-buttons">
-            <a href="#materials" class="btn-gold">تصفح المواد الآن ↓</a>
-            <a href="#how-to-study" class="btn-white">كيف تذاكر بذكاء؟</a>
-        </div>
-
-        <div class="hero-features">
-            <span>✓ 7 مواد دراسية</span>
-            <span>✓ انفوجرافيك مبسط</span>
-            <span>✓ بنك أسئلة</span>
-            <span>✓ فيديوهات شرح</span>
-        </div>
-    </section>
-
-    <!-- قسم الكروت التوضيحية بالشكل الجديد الشيك -->
-    <section class="preview-cards-section">
-        <div class="material-preview-card">
-            <!-- الصورة الرئيسية -->
-            <img src="images/study-desk.jpg" alt="ملخص انفوجرافيك" class="main-card-img">
-
-            <!-- الكبسولات العائمة فوق الصورة (Overlays) -->
-            <div class="card-overlay-capsule top-right">
-                <i class="fas fa-book-open"></i>
-                <span>ملخص انفوجرافيك</span>
+    <main>
+        <!-- Hero -->
+        <section class="hero-section">
+            <div class="badge-hero">
+                <span>📚 منصة طلابية لطلاب سوهاج</span>
+            </div>
+            <h2 class="hero-title">ذاكر ببساطة، تنجح بذكاء</h2>
+            <p>كل ملخصات الفرقة الثانية في مكان واحد، من محاضرات وكتب كليتك، محولة لانفوجرافيك سهل للفهم.</p>
+            
+            <div class="hero-buttons">
+                <a href="#materials" class="btn-gold">تصفح المواد الآن ↓</a>
+                <a href="#how-to-study" class="btn-white">كيف تذاكر بذكاء؟</a>
             </div>
 
-            <div class="card-overlay-capsule bottom-left">
-                <i class="fas fa-question-circle"></i>
-                <span>بنك أسئلة شامل</span>
-            </div>
-        </div>
-    </section>
+            <ul class="hero-features" aria-label="مميزات المنصة">
+                <li>✓ 7 مواد دراسية</li>
+                <li>✓ انفوجرافيك مبسط</li>
+                <li>✓ بنك أسئلة</li>
+                <li>✓ فيديوهات شرح</li>
+            </ul>
+        </section>
 
-    <!-- مواد الفرقة الثانية -->
-    <section class="materials-section" id="materials">
-        <div class="section-header">
-            <span>📚 مواد الفرقة الثانية</span>
-            <h2>مواد الفرقة الثانية - 7 مواد</h2>
-            <p>اختر مادتك وابدأ المذاكرة: ملخص المادة، ملخص الكتاب،</p>
-        </div>
-
-        <div class="materials-grid">
-            <!-- مادة 1: إدارة الموارد البشرية -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="images/human-resources-icon.png" alt="إدارة الموارد البشرية" style="width: 48px; height: 48px;">
+        <!-- كارت توضيحي -->
+        <section class="preview-cards-section" aria-label="معاينة">
+            <div class="material-preview-card">
+                <img src="images/study-desk.jpg" alt="طالب يذاكر على مكتب مع ملخص انفوجرافيك" class="main-card-img" loading="lazy" width="800" height="450">
+                <div class="card-overlay-capsule top-right" aria-hidden="true">
+                    <i class="fas fa-book-open"></i>
+                    <span>ملخص انفوجرافيك</span>
                 </div>
-                <h3>إدارة الموارد البشرية</h3>
-                <p>وظائف إدارة الأفراد، التوظيف والاختيار، التدريب، التحفيز وتقييم الأداء.</p>
-                <div class="material-tags">
-                    <span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span>
+                <div class="card-overlay-capsule bottom-left" aria-hidden="true">
+                    <i class="fas fa-question-circle"></i>
+                    <span>بنك أسئلة شامل</span>
                 </div>
-                <a href="my-website/human-resources/index.html" class="start-study-btn">ابدأ المذاكرة ←</a>
+            </div>
+        </section>
+
+        <!-- مواد الفرقة -->
+        <section class="materials-section" id="materials">
+            <div class="section-header">
+                <span class="section-badge">📚 مواد الفرقة الثانية</span>
+                <h2>مواد الفرقة الثانية - 7 مواد</h2>
+                <p>اختر مادتك وابدأ المذاكرة: ملخص المادة، ملخص الكتاب،</p>
             </div>
 
-            <!-- مادة 2: اقتصاديات النقود والبنوك -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="images/money-and-banks-icon.png" alt="اقتصاديات النقود والبنوك" style="width: 48px; height: 48px;">
-                </div>
-                <h3>اقتصاديات النقود والبنوك</h3>
-                <p>النقود ووظائفها، البنوك المركزية والتجارية، السياسة النقدية والائتمان.</p>
-                <div class="material-tags">
-                    <span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span>
-                </div>
-                <a href="my-website/money-and-banks/index.html" class="start-study-btn">ابدأ المذاكرة ←</a>
-            </div>
+            <div class="materials-grid">
+                <a href="human-resources/index.html" class="material-card">
+                    <div class="material-icon"><img src="images/human-resources-icon.png" alt="" width="48" height="48" loading="lazy"></div>
+                    <h3>إدارة الموارد البشرية</h3>
+                    <p>وظائف إدارة الأفراد، التوظيف والاختيار، التدريب، التحفيز وتقييم الأداء.</p>
+                    <div class="material-tags"><span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span></div>
+                    <span class="start-study-btn">ابدأ المذاكرة ←</span>
+                </a>
 
-            <!-- مادة 3: المحاسبة في شركات الأشخاص -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="images/partnership-accounting-icon.png" alt="المحاسبة في شركات الأشخاص" style="width: 48px; height: 48px;">
-                </div>
-                <h3>المحاسبة في شركات الأشخاص</h3>
-                <p>تكوين الشركات، توزيع الأرباح، وانضمام وانسحاب الشركاء.</p>
-                <div class="material-tags">
-                    <span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span>
-                </div>
-                <a href="my-website/partnership-accounting/index.html" class="start-study-btn">ابدأ المذاكرة ←</a>
-            </div>
+                <a href="money-and-banks/index.html" class="material-card">
+                    <div class="material-icon"><img src="images/money-and-banks-icon.png" alt="" width="48" height="48" loading="lazy"></div>
+                    <h3>اقتصاديات النقود والبنوك</h3>
+                    <p>النقود ووظائفها، البنوك المركزية والتجارية، السياسة النقدية والائتمان.</p>
+                    <div class="material-tags"><span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span></div>
+                    <span class="start-study-btn">ابدأ المذاكرة ←</span>
+                </a>
 
-            <!-- مادة 4: دراسات اقتصادية بلغة إنجليزية -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="images/english-economics-icon.png" alt="دراسات اقتصادية بلغة إنجليزية" style="width: 48px; height: 48px;">
-                </div>
-                <h3>دراسات اقتصادية بلغة إنجليزية</h3>
-                <p>قراءة وتحليل موضوعات اقتصادية بالإنجليزية والمصطلحات الأساسية.</p>
-                <div class="material-tags">
-                    <span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span>
-                </div>
-                <a href="my-website/english-economics/index.html" class="start-study-btn">ابدأ المذاكرة ←</a>
-            </div>
+                <a href="partnership-accounting/index.html" class="material-card">
+                    <div class="material-icon"><img src="images/partnership-accounting-icon.png" alt="" width="48" height="48" loading="lazy"></div>
+                    <h3>المحاسبة في شركات الأشخاص</h3>
+                    <p>تكوين الشركات، توزيع الأرباح، وانضمام وانسحاب الشركاء.</p>
+                    <div class="material-tags"><span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span></div>
+                    <span class="start-study-btn">ابدأ المذاكرة ←</span>
+                </a>
 
-            <!-- مادة 5: ريادة أعمال -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="images/entrepreneurship-icon.png" alt="ريادة أعمال" style="width: 48px; height: 48px;">
-                </div>
-                <h3>ريادة أعمال</h3>
-                <p>فكرة المشروع، دراسة الجدوى، ونموذج العمل وخطة النمو.</p>
-                <div class="material-tags">
-                    <span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span>
-                </div>
-                <a href="my-website/entrepreneurship/index.html" class="start-study-btn">ابدأ المذاكرة ←</a>
-            </div>
+                <a href="english-economics/index.html" class="material-card">
+                    <div class="material-icon"><img src="images/english-economics-icon.png" alt="" width="48" height="48" loading="lazy"></div>
+                    <h3>دراسات اقتصادية بلغة إنجليزية</h3>
+                    <p>قراءة وتحليل موضوعات اقتصادية بالإنجليزية والمصطلحات الأساسية.</p>
+                    <div class="material-tags"><span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span></div>
+                    <span class="start-study-btn">ابدأ المذاكرة ←</span>
+                </a>
 
-            <!-- مادة 6: رياضيات التمويل والاستثمار -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="images/financial-math-icon.png" alt="رياضيات التمويل والاستثمار" style="width: 48px; height: 48px;">
-                </div>
-                <h3>رياضيات التمويل والاستثمار</h3>
-                <p>الفائدة، القيمة الزمنية للنقود، والأنوية والاستثمار.</p>
-                <div class="material-tags">
-                    <span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span>
-                </div>
-                <a href="my-website/financial-math/index.html" class="start-study-btn">ابدأ المذاكرة ←</a>
-            </div>
+                <a href="entrepreneurship/index.html" class="material-card">
+                    <div class="material-icon"><img src="images/entrepreneurship-icon.png" alt="" width="48" height="48" loading="lazy"></div>
+                    <h3>ريادة أعمال</h3>
+                    <p>فكرة المشروع، دراسة الجدوى، ونموذج العمل وخطة النمو.</p>
+                    <div class="material-tags"><span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span></div>
+                    <span class="start-study-btn">ابدأ المذاكرة ←</span>
+                </a>
 
-            <!-- مادة 7: محاسبة متوسطة -->
-            <div class="material-card">
-                <div class="material-icon">
-                    <img src="images/intermediate-accounting-icon.png" alt="محاسبة متوسطة" style="width: 48px; height: 48px;">
-                </div>
-                <h3>محاسبة متوسطة</h3>
-                <p>الأصول الثابتة، الاستهلاك، المخصصات والاحتياطيات.</p>
-                <div class="material-tags">
-                    <span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span>
-                </div>
-                <a href="my-website/intermediate-accounting/index.html" class="start-study-btn">ابدأ المذاكرة ←</a>
-            </div>
-        </div>
-    </section>
+                <a href="financial-math/index.html" class="material-card">
+                    <div class="material-icon"><img src="images/financial-math-icon.png" alt="" width="48" height="48" loading="lazy"></div>
+                    <h3>رياضيات التمويل والاستثمار</h3>
+                    <p>الفائدة، القيمة الزمنية للنقود، والأنوية والاستثمار.</p>
+                    <div class="material-tags"><span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span></div>
+                    <span class="start-study-btn">ابدأ المذاكرة ←</span>
+                </a>
 
-    <!-- كيف تذاكر بذكاء في 4 خطوات -->
-    <section class="how-to-section" id="how-to-study">
-        <div class="section-header">
-            <span>💡 طريقة المذاكرة</span>
-            <h2>كيف تذاكر بذكاء في 4 خطوات؟</h2>
-            <p>نظّم مذاكرتك بدل التشتت: افهم، راجع، تدرب، ثم ثبت المعلومة بالمشاهدة.</p>
-        </div>
+                <a href="intermediate-accounting/index.html" class="material-card">
+                    <div class="material-icon"><img src="images/intermediate-accounting-icon.png" alt="" width="48" height="48" loading="lazy"></div>
+                    <h3>محاسبة متوسطة</h3>
+                    <p>الأصول الثابتة، الاستهلاك، المخصصات والاحتياطيات.</p>
+                    <div class="material-tags"><span>ملخص المادة</span> • <span>ملخص الكتاب</span> • <span>أسئلة</span> • <span>فيديوهات</span></div>
+                    <span class="start-study-btn">ابدأ المذاكرة ←</span>
+                </a>
+            </div>
+        </section>
 
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-icon">
-                    <img src="images/step-infographic-icon.png" alt="الخطوة 1" style="width: 40px; height: 40px;">
-                </div>
-                <div class="step-num">1</div>
-                <h3>افهم الإنفوجرافيك</h3>
-                <p>ابدأ من ملخص المحاضرة المصمم في صناديق واضحة: تعريف، خصائص، ومقارنات.</p>
+        <!-- كيف تذاكر -->
+        <section class="how-to-section" id="how-to-study">
+            <div class="section-header">
+                <span class="section-badge">💡 طريقة المذاكرة</span>
+                <h2>كيف تذاكر بذكاء في 4 خطوات؟</h2>
+                <p>نظّم مذاكرتك بدل التشتت: افهم، راجع، تدرب، ثم ثبت المعلومة بالمشاهدة.</p>
             </div>
-            <div class="step-card">
-                <div class="step-icon">
-                    <img src="images/step-book-summary-icon.png" alt="الخطوة 2" style="width: 40px; height: 40px;">
-                </div>
-                <div class="step-num">2</div>
-                <h3>راجع ملخص الكتاب</h3>
-                <p>اقرأ ملخص فصول الكتاب الرسمي للتأكد من تغطية كل أجزاء المادة.</p>
+            <div class="steps-grid">
+                <div class="step-card"><div class="step-icon"><img src="images/step-infographic-icon.png" alt="" width="40" height="40" loading="lazy"></div><div class="step-num">1</div><h3>افهم الإنفوجرافيك</h3><p>ابدأ من ملخص المحاضرة المصمم في صناديق واضحة: تعريف، خصائص، ومقارنات.</p></div>
+                <div class="step-card"><div class="step-icon"><img src="images/step-book-summary-icon.png" alt="" width="40" height="40" loading="lazy"></div><div class="step-num">2</div><h3>راجع ملخص الكتاب</h3><p>اقرأ ملخص فصول الكتاب الرسمي للتأكد من تغطية كل أجزاء المادة.</p></div>
+                <div class="step-card"><div class="step-icon"><img src="images/step-questions-icon.png" alt="" width="40" height="40" loading="lazy"></div><div class="step-num">3</div><h3>تدرّب على الأسئلة</h3><p>حل أسئلة المحاضرات والفصول لتقيس مستوى فهمك قبل الامتحان.</p></div>
+                <div class="step-card"><div class="step-icon"><img src="images/step-video-icon.png" alt="" width="40" height="40" loading="lazy"></div><div class="step-num">4</div><h3>ثبّت بالفيديو</h3><p>شاهد شرح اليوتيوب للنقاط التي ما زالت غامضة عليك.</p></div>
             </div>
-            <div class="step-card">
-                <div class="step-icon">
-                    <img src="images/step-questions-icon.png" alt="الخطوة 3" style="width: 40px; height: 40px;">
-                </div>
-                <div class="step-num">3</div>
-                <h3>تدرّب على الأسئلة</h3>
-                <p>حل أسئلة المحاضرات والفصول لتقيس مستوى فهمك قبل الامتحان.</p>
+            <div class="stats-box">
+                <div class="stat-item"><span class="number">7</span><span class="label">مواد دراسية</span></div>
+                <div class="stat-item"><span class="number">9</span><span class="label">محاضرات لكل مادة</span></div>
+                <div class="stat-item"><span class="number">6</span><span class="label">فصول لكل كتاب</span></div>
+                <div class="stat-item"><span class="number">4</span><span class="label">طرق مذاكرة</span></div>
             </div>
-            <div class="step-card">
-                <div class="step-icon">
-                    <img src="images/step-video-icon.png" alt="الخطوة 4" style="width: 40px; height: 40px;">
-                </div>
-                <div class="step-num">4</div>
-                <h3>ثبّت بالفيديو</h3>
-                <p>شاهد شرح اليوتيوب للنقاط التي ما زالت غامضة عليك.</p>
-            </div>
-        </div>
+        </section>
 
-        <!-- إحصائيات سريعة -->
-        <div class="stats-box">
-            <div class="stat-item">
-                <span class="number">7</span>
-                <span class="label">مواد دراسية</span>
+        <!-- FAQ -->
+        <section class="faq-section" id="faq">
+            <div class="section-header">
+                <span class="section-badge">❓ أسئلة شائعة</span>
+                <h2>الأسئلة الشائعة</h2>
+                <p>كل ما يحتاج طالب الفرقة الثانية معرفته عن المنصة.</p>
             </div>
-            <div class="stat-item">
-                <span class="number">9</span>
-                <span class="label">محاضرات لكل مادة</span>
+            <div class="faq-container">
+                <details class="faq-item"><summary class="faq-question">هل المنصة رسمية تابعة للكلية؟</summary><div class="faq-answer">لا، المنصة غير رسمية ولا تمثل كلية التجارة جامعة سوهاج ولا يربطها بها صلة، وهي جهد طلابي لتسهيل المذاكرة على زملائنا.</div></details>
+                <details class="faq-item"><summary class="faq-question">هل المحتوى مجاني؟</summary><div class="faq-answer">نعم، كل الملخصات والأسئلة والفيديوهات متاحة مجانًا لطلاب الفرقة الثانية بدون تسجيل دخول.</div></details>
+                <details class="faq-item"><summary class="faq-question">ماذا أفعل إذا كانت محاضرة غير متوفرة؟</summary><div class="faq-answer">تظهر المحاضرات أو الفصول غير الجاهزة بشارة «غير متوفر حاليا»، ويتم إضافتها تباعًا. راجع الصفحة مرة أخرى لاحقًا.</div></details>
+                <details class="faq-item"><summary class="faq-question">كيف أذاكر بذكاء باستخدام الموقع؟</summary><div class="faq-answer">اتبع الخطوات الأربع: افهم الإنفوجرافيك، راجع ملخص الكتاب، حل الأسئلة، ثم ثبّت بالفيديو.</div></details>
             </div>
-            <div class="stat-item">
-                <span class="number">6</span>
-                <span class="label">فصول لكل كتاب</span>
-            </div>
-            <div class="stat-item">
-                <span class="number">4</span>
-                <span class="label">طرق مذاكرة</span>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- الأسئلة الشائعة (FAQ) -->
-    <section class="faq-section" id="faq">
-        <div class="section-header">
-            <span>❓ أسئلة شائعة</span>
-            <h2>الأسئلة الشائعة</h2>
-            <p>كل ما يحتاج طالب الفرقة الثانية معرفته عن المنصة.</p>
-        </div>
-
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">هل المنصة رسمية تابعة للكلية؟ <span>⌄</span></div>
-                <div class="faq-answer">لا، المنصة غير رسمية ولا تمثل كلية التجارة جامعة سوهاج ولا يربطها بها صلة، وهي جهد طلابي لتسهيل المذاكرة على زملائنا.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">هل المحتوى مجاني؟ <span>⌄</span></div>
-                <div class="faq-answer">نعم، كل الملخصات والأسئلة والفيديوهات متاحة مجانًا لطلاب الفرقة الثانية بدون تسجيل دخول.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">ماذا أفعل إذا كانت محاضرة غير متوفرة؟ <span>⌄</span></div>
-                <div class="faq-answer">تظهر المحاضرات أو الفصول غير الجاهزة بشارة «غير متوفر حاليا»، ويتم إضافتها تباعًا. راجع الصفحة مرة أخرى لاحقًا.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">كيف أذاكر بذكاء باستخدام الموقع؟ <span>⌄</span></div>
-                <div class="faq-answer">اتبع الخطوات الأربع: افهم الإنفوجرافيك، راجع ملخص الكتاب، حل الأسئلة، ثم ثبّت بالفيديو. هذا الترتيب يوفّر وقتك ويثبّت المعلومة.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">من يقف وراء هذه المنصة؟ <span>⌄</span></div>
-                <div class="faq-answer">المنصة من إعداد وتطوير محمد وائل - الفرقة الثانية، وهي جزء من شبكة SFV-X.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- الفوتر (Footer) -->
     <footer class="main-footer">
         <div class="footer-content">
             <p class="footer-desc">منصة طلابية غير رسمية تجمع ملخصات وأسئلة وفيديوهات مواد الفرقة الثانية بكلية التجارة جامعة سوهاج، في شكل انفوجرافيك مبسط للفهم.</p>
-            
             <div class="footer-links-grid">
-                <div class="footer-col">
-                    <h4>روابط سريعة</h4>
-                    <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="#materials">المواد</a></li>
-                        <li><a href="#how-to-study">كيف تذاكر</a></li>
-                        <li><a href="#faq">الأسئلة الشائعة</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>مواد الفرقة الثانية</h4>
-                    <ul>
-                        <li>إدارة الموارد البشرية</li>
-                        <li>اقتصاديات النقود والبنوك</li>
-                        <li>المحاسبة في شركات الأشخاص</li>
-                        <li>دراسات اقتصادية بلغة إنجليزية</li>
-                        <li>ريادة أعمال</li>
-                        <li>رياضيات التمويل والاستثمار</li>
-                        <li>محاسبة متوسطة</li>
-                    </ul>
-                </div>
+                <div class="footer-col"><h4>روابط سريعة</h4><ul><li><a href="index.html">الرئيسية</a></li><li><a href="#materials">المواد</a></li><li><a href="#how-to-study">كيف تذاكر</a></li><li><a href="#faq">الأسئلة الشائعة</a></li></ul></div>
+                <div class="footer-col"><h4>مواد الفرقة الثانية</h4><ul><li>إدارة الموارد البشرية</li><li>اقتصاديات النقود والبنوك</li><li>المحاسبة في شركات الأشخاص</li><li>دراسات اقتصادية بلغة إنجليزية</li><li>ريادة أعمال</li><li>رياضيات التمويل والاستثمار</li><li>محاسبة متوسطة</li></ul></div>
             </div>
-
-            <div class="disclaimer-box">
-                <p>هذا الموقع غير رسمي ولا يمثل كلية التجارة جامعة سوهاج ولا يربطه بها صلة، الملخصات من المحاضرات والكتب الأساسية، موقع من طالب داخل الكلية للتسهيل للطلاب - إعداد وتطوير: محمد وائل - الفرقة الثانية - جزء من شبكة SFV-X.</p>
-            </div>
-
-            <div class="copyright">
-                <p>© 2026 ذاكر ببساطة - تنجح بذكاء. جميع الحقوق محفوظة.</p>
-                <p>إعداد وتطوير: محمد وائل - جزء من شبكة SFV-X</p>
-            </div>
+            <div class="disclaimer-box"><p>هذا الموقع غير رسمي ولا يمثل كلية التجارة جامعة سوهاج ولا يربطه بها صلة، الملخصات من المحاضرات والكتب الأساسية، موقع من طالب داخل الكلية للتسهيل للطلاب - إعداد وتطوير: محمد وائل - الفرقة الثانية - جزء من شبكة SFV-X.</p></div>
+            <div class="copyright"><p>© 2026 ذاكر ببساطة - تنجح بذكاء. جميع الحقوق محفوظة.</p><p>إعداد وتطوير: محمد وائل - جزء من شبكة SFV-X</p></div>
         </div>
     </footer>
 
-    <!-- زر الصعود للأعلى -->
-    <a href="#" class="scroll-top-btn">↑</a>
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="العودة للأعلى">↑</button>
 
-    <script src="script.js"></script>
-</body>
+    <!-- JSON-LD للسيو -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "هل المنصة رسمية تابعة للكلية؟", "acceptedAnswer": {"@type": "Answer", "text": "لا، المنصة غير رسمية وهي جهد طلابي."}},
+        {"@type": "Question", "name": "هل المحتوى مجاني؟", "acceptedAnswer": {"@type": "Answer", "text": "نعم، كل المحتوى مجاني بدون تسجيل دخول."}}
+      ]
+    }
+    </script>
+
+    <script src="script.js" defer></script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
